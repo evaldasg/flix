@@ -28,7 +28,7 @@ describe "Viewing the list of movies" do
     expect(page).to have_text(movie1.rating)
     expect(page).to have_text(movie1.description[0..9])
     expect(page).to have_text(movie1.released_on.year)
-    expect(page).to have_text("388,736,000.00")
+    expect(page).to have_text("388,736,000")
   end
 
 end
