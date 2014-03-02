@@ -30,28 +30,28 @@ Movie.create!([
     {
       title: "Monsters University",
       rating: "G",
-      total_gross: 268488329,
+      total_gross: 268488329.00,
       description: "A look at the relationship between Mike and Sulley during their days at Monsters University -- when they weren't necessarily the best of friends.",
       released_on: "21 June 2013"
     },
     {
       title: "Monsters, Inc.",
       rating: "G",
-      total_gross: 289907418,
+      total_gross: 289907418.00,
       description: "Monsters generate their city's power by scaring children, but they are terribly afraid themselves of being contaminated by children, so when one enters Monstropolis, top scarer Sulley finds his world disrupted.",
       released_on: "2 November 2001"
     },
     {
       title: "Ice Age: Dawn of the Dinosaurs",
       rating: "PG",
-      total_gross: 196573705,
+      total_gross: 196573705.00,
       description: "When Sid's attempt to adopt three dinosaur eggs gets him abducted by their real mother to an underground lost world, his friends attempt to rescue him.",
       released_on: "1 July 2009"
     },
     {
       title: "Cars",
       rating: "G",
-      total_gross: 244052771,
+      total_gross: 244052771.00,
       description: "A hot-shot race-car named Lightning McQueen gets waylaid in Radiator Springs, where he finds the true meaning of friendship and family.",
       released_on: "9 June 2006"
     }
