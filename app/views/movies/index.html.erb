@@ -1,0 +1,32 @@
+<ul id="movies">
+  <% @movies.each do |movie| %>
+    <li>
+      <article class="movie">
+        <header>
+
+          <h2><%= link_to movie.title, movie %> (<%= movie.released_on.year %>)</h2>
+
+        </header>
+        <p>
+          <%= truncate(movie.description, length: 45, separator: ' ') %>
+        </p>
+        <table>
+          <tr>
+            <th>Rating</th>
+            <td><%= movie.rating %></td>
+          </tr>
+          <tr>
+            <th>Duration</th>
+
+          </tr>
+          <tr>
+            <th>Total Gross</th>
+            <td><%= number_to_currency(movie.total_gross) %></td>
+          </tr>
+        </table>
+        <footer>
+        </footer>
+      </article>
+    </li>
+  <% end %>
+</ul>
