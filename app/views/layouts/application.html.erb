@@ -8,7 +8,18 @@
 </head>
 <body>
 
-<%= yield %>
+<div id="wrapper">
+
+  <div id="container">
+    <section id="sidebar">
+      <%= render "layouts/sidebar" %>
+    </section>
+    <section id="content">
+      <%= yield %>
+    </section>
+  </div>
+
+</div>
 
 </body>
 </html>
