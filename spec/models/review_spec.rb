@@ -20,7 +20,7 @@ describe "A review" do
     review = Review.new(name: "")
 
     expect(review.valid?).to be_false
-    expect(review.errors[:name].any?).to by_true
+    expect(review.errors[:name].any?).to be_true
   end
 
   it "requires a comment" do

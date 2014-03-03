@@ -11,6 +11,8 @@ class Movie < ActiveRecord::Base
   }
   validates :rating, inclusion: { in: RATINGS, message: "is not selected" }
 
+  has_many :reviews, dependent: :destroy
+
   def flop?
     total_gross.blank? || total_gross < 50000000
   end

@@ -199,7 +199,7 @@ describe "A movie" do
   end
 
   it "deletes associated review" do
-    movie = Movie.created(movie_attributes)
+    movie = Movie.create(movie_attributes)
 
     movie.reviews.create(review_attributes)
 
