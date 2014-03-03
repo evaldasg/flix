@@ -1,6 +1,6 @@
 class MoviesController < ApplicationController
   def index
-    @movies = Movie.all
+    @movies = Movie.released
   end
 
   def show
@@ -34,6 +34,13 @@ class MoviesController < ApplicationController
     redirect_to movies_path
   end
 
+  def upcoming
+    @movies = Movie.upcoming
+  end
+
+  def recently_added
+    @movies = Movie.recently_added
+  end
 
 private
   def movie_params
