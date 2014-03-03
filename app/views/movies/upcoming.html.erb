@@ -3,9 +3,9 @@
     <li>
       <article class="movie">
         <header>
-
+        <%= link_to image_for(movie, size: "95x135", alt: movie.title), movie %>
           <h2><%= link_to movie.title, movie %> (<%= movie.released_on.year %>)</h2>
-
+          <h3><%= movie.cast %></h3>
         </header>
         <p>
           <%= truncate(movie.description, length: 45, separator: ' ') %>
@@ -17,7 +17,7 @@
           </tr>
           <tr>
             <th>Duration</th>
-
+            <td><%= movie.duration %> min</td>
           </tr>
           <tr>
             <th>Total Gross</th>
