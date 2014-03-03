@@ -1,4 +1,5 @@
 <%= form_for(@movie) do |f| %>
+  <%= render 'shared/errors' %>
   <fieldset>
     <ol>
       <li class="required">
@@ -40,7 +41,7 @@
     </ol>
     <p>
       <%= f.submit %>
-      <%= link_to "Cancel", movies_path, class: 'button' %>
+      <%= link_to "Cancel", @movie, class: 'button' %>
     </p>
   </fieldset>
 <% end %>
