@@ -11,3 +11,11 @@ def movie_attributes(overrides ={})
     image_file_name: "frozen.jpg"
   }.merge(overrides)
 end
+
+def review_attributes(overrides = {})
+  {
+    name: "Tadas Blind"
+    stars: 5,
+    comment: "I laughed and cried, it was very great."
+  }.merge(overrides)
+end
