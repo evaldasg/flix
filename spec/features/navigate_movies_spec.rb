@@ -44,4 +44,14 @@ describe "Navigating movies" do
 
     expect(current_path).to eq(recently_added_path)
   end
+
+  it "allows navigation to the 'Hits Movies' listing page" do
+    movie = Movie.create(movie_attributes)
+
+    visit movies_url
+
+    click_link 'Hits Movies'
+
+    expect(current_path).to eq(hits_path)
+  end
 end

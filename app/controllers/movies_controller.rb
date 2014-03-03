@@ -42,6 +42,9 @@ class MoviesController < ApplicationController
     @movies = Movie.recently_added
   end
 
+  def hits
+    @movies = Movie.hits
+  end
 private
   def movie_params
     params[:movie].permit(:title, :description, :rating, :released_on, :total_gross,
