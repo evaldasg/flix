@@ -6,4 +6,12 @@ module MoviesHelper
       number_to_currency(movie.total_gross, precision: 0)
     end
   end
+
+  def image_for(movie, overrides = {})
+    if movie.image_file_name.blank?
+      image_tag('placeholder.png')
+    else
+      image_tag(movie.image_file_name, overrides)
+    end
+  end
 end

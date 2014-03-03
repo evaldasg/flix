@@ -1,6 +1,6 @@
 <article id="movie" class="movie">
   <header>
-
+  <%= image_for(@movie, alt: @movie.title) %>
     <h1><%= @movie.title %></h1>
     <h2>Released: <%= @movie.released_on %></h2>
   </header>
@@ -10,17 +10,17 @@
   </p>
 
   <h3 class="no-rule">
-    <%= @movie.rating %> &bull;
+    <%= @movie.rating %> &bull; <%= @movie.duration %>
   </h3>
 
   <h3>Cast</h3>
   <p>
-
+    <%= @movie.cast %>
   </p>
 
   <h3>Director</h3>
   <p>
-
+    <%= @movie.director %>
   </p>
 
   <h3>Total Gross</h3>

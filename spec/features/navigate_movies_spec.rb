@@ -19,7 +19,7 @@ describe "Navigating movies" do
 
     visit movies_url
 
-    click_link movie.title
+    within('h2') { click_link movie.title }
 
     expect(current_path).to eq(movie_path(movie))
 
