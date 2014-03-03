@@ -10,12 +10,13 @@ describe "Creating a new movie" do
 
     fill_in 'Title', with: 'New Title'
     fill_in 'Description', with: 'Super great film and very fun of course'
-    fill_in 'Rating', with: "PG"
-    fill_in 'Total gross', with: '75000000'
+    select 'PG-13', :from => "movie_rating"
+    fill_in 'Total gross', with: '75000000.00'
     select (Time.now.year - 1).to_s, :from => "movie_released_on_1i"
     fill_in 'Cast', with: "The award-winning cast"
     fill_in 'Director', with: "123"
     fill_in 'Image file name', with: "movie.png"
+    fill_in 'Duration', with: '100'
 
     click_button 'Create Movie'
 
