@@ -73,6 +73,39 @@ Movie.create!([
       image_file_name: "iceage3.jpg"
     },
     {
+      title: "The Croods 2",
+      rating: "G",
+      total_gross: 0.00,
+      description: "Status: Treatment/Outline\nProduction Co: DreamWorks Animation\nCountry: USA\nLanguage: English\nDirectors: Kirk De Micco, Chris Sanders\nWriters: Kirk De Micco, Chris Sanders",
+      released_on: "2017-03-03",
+      cast: "",
+      director: "Kirk De Micco, Chris Sanders",
+      duration: 0,
+      image_file_name: ""
+    },
+    {
+      title: "Finding Dory",
+      rating: "PG",
+      total_gross: 0.0,
+      description: "The plot of this movie, a sequel to Finding Nemo, is unknown.\nWriters: Andrew Stanton (characters), Victoria Strouse (screenplay).\nGenres: Animation | Adventure | Comedy | Family.\nProduction Co: Pixar Animation Studios, Walt Disney Pictures",
+      released_on: "2016-06-16",
+      cast: "Ellen DeGeneres, Albert Brooks, Diane Keaton",
+      director: "Andrew Stanton",
+      duration: 0,
+      image_file_name: "dory.jpg"
+    },
+    {
+      title: "Inside Out",
+      rating: "PG",
+      total_gross: 0.0,
+      description: "A film told from the perspective of the emotions inside the mind of a little girl.\nWriters: Michael Arndt (screenplay), Pete Docter (story).\nStatus: Pre-production.\nThe Untitled Pixar Movie That Takes You Inside the Mind.",
+      released_on: "2015-06-17",
+      cast: "Amy Poehler, Bill Hader, Mindy Kaling, John Ratzenb...",
+      director: "Pete Docter",
+      duration: 0,
+      image_file_name: "insideout.jpg"
+    },
+    {
       title: "Cars",
       rating: "G",
       total_gross: 244052771.00,
@@ -84,3 +117,10 @@ Movie.create!([
       image_file_name: "cars.jpg"
     }
 ])
+movie = Movie.find_by(title: 'Frozen')
+movie.reviews.create!(name: "Roger Ebert", stars: 5, comment: "I laughed, I cried, I spilled my popcorn!")
+movie.reviews.create!(name: "Gene Siskel", stars: 5, comment: "I'm a better reviewer than he is.")
+movie.reviews.create!(name: "Peter Travers", stars: 4, comment: "It's been years since a movie superhero was this fierce and this funny.")
+
+movie = Movie.find_by(title: 'Tangled')
+movie.reviews.create!(name: "Elvis Mitchell", stars: 5, comment: "It's a bird, it's a plane, it's a blockbuster!")
