@@ -25,5 +25,10 @@ module Flix
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
     config.i18n.enforce_available_locales = true
+
+    # Disable auto test framework generating files
+    config.generators do |g|
+        g.test_framework false
+    end
   end
 end
