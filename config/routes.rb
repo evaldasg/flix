@@ -10,4 +10,6 @@ Flix::Application.routes.draw do
   get "recently_added" => "movies#recently_added"
   get "hits" => "movies#hits"
 
+  get "signup" => "users#new"
+
 end
