@@ -3,7 +3,7 @@ require "spec_helper"
 describe "Editing a user" do
 
   it "updates the user and shows the user's updated details" do
-    user = User.create!(user_attributes)
+    user = create(:user)
 
     visit user_url(user)
 
@@ -23,7 +23,7 @@ describe "Editing a user" do
   end
 
   it "does not update the user if it's invalid" do
-    user = User.create!(user_attributes)
+    user = create(:user)
 
     visit edit_user_url(user)
 

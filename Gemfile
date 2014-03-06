@@ -33,14 +33,18 @@ group :doc do
 end
 
 group :test, :development do
-  gem "rspec-rails", "2.13.1"
+  gem "rspec-rails", "~> 2.13"
   gem 'sqlite3'
   gem "pry"
   gem "factory_girl_rails"
 end
 
 group :test do
-  gem "capybara", "2.1.0"
+  gem "capybara", "~> 2.1"
+  gem "faker"
+  gem "database_cleaner"
+  gem "launchy"
+  gem "selenium-webdriver"
 end
 # Use ActiveModel has_secure_password
 gem 'bcrypt-ruby', '~> 3.1.2'

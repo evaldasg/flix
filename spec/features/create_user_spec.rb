@@ -10,6 +10,7 @@ describe "Creating a new user" do
     expect(current_path).to eq(signup_path)
 
     fill_in 'Name', with: 'User'
+    fill_in 'Username', with: 'Username'
     fill_in 'Email', with: 'email@email.com'
     fill_in 'Password', with: 'password'
     fill_in 'Confirm Password', with: 'password'

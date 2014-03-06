@@ -3,14 +3,29 @@ require 'spec_helper'
 describe "A user" do
 
   it "requires a name" do
-    user = User.new(name: "")
+    user = build(:user, name: "")
 
     expect(user.valid?).to be_false
     expect(user.errors[:name].any?).to be_true
   end
 
+  it "requires a username" do
+    user = build_stubbed(:user, username: " ")
+
+    expect(user.valid?).to be_false
+    expect(user.errors[:username].any?).to be_true
+  end
+
+  it "requires a unique, case insensitive username" do
+    user1 = create(:user, username: "evo")
+    user2 = build(:user, username: "evo")
+
+    expect(user2.valid?).to be_false
+    expect(user2.errors[:username].first).to eq("has already been taken")
+  end
+
   it "requires an email" do
-    user = User.new(email: "")
+    user = build(:user, email: "")
 
     expect(user.valid?).to be_false
     expect(user.errors[:email].any?).to be_true
@@ -38,15 +53,15 @@ describe "A user" do
   end
 
   it "requires a unique, case insensitive email address" do
-    user1 = User.create!(user_attributes)
+    user1 = create(:user)
 
-    user2 = User.new(email: user1.email.upcase)
+    user2 = build(:user, email: user1.email.upcase)
     expect(user2.valid?).to be_false
     expect(user2.errors[:email].first).to eq("has already been taken")
   end
 
   it "is valid with example attributes" do
-    user = User.new(user_attributes)
+    user = build(:user)
 
     expect(user.valid?).to be_true
   end
@@ -73,13 +88,13 @@ describe "A user" do
   end
 
   it "requires a password and matching password confirmation when creating" do
-    user = User.create!(user_attributes(password: "secret", password_confirmation: "secret"))
+    user = create(:user, password: "secret", password_confirmation: "secret")
 
     expect(user.valid?).to be_true
   end
 
   it "does not require a password when updating" do
-    user = User.create!(user_attributes)
+    user = create(:user)
 
     user.password = ""
 

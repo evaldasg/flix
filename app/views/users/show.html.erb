@@ -1,6 +1,9 @@
 <article id="user">
   <header>
+    <%= profile_image_for(@user) %>
     <h1><%= @user.name %></h1>
+    <h3>Member since: <small><%= @user.created_at.strftime("%B %Y") %></small></h3>
+
     <h2><%= mail_to(@user.email) %></h2>
   </header>
 </article>

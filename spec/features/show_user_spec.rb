@@ -3,7 +3,7 @@ require "spec_helper"
 describe "Viewing a user's profile page" do
 
   it "shows the user's details" do
-    user = User.create!(user_attributes)
+    user = create(:user)
 
     visit user_url(user)
 
