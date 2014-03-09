@@ -2,6 +2,19 @@ require "spec_helper"
 
 describe "Deleting a user" do
 
+  it "automatically signs out that user" do
+    user = create(:user)
+
+    sign_in(user)
+
+    visit user_path(user)
+
+    click_link 'Delete Account'
+
+    expect(page).to have_link('Sign In')
+    expect(page).not_to have_link('Sign Out')
+  end
+
   it "destroys the user and redirects to the home page" do
     user = create(:user)
 
