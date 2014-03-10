@@ -9,9 +9,11 @@
 </article>
 <footer>
   <nav>
+  <% if current_user?(@user) %>
     <p><%= link_to 'Edit Account', edit_user_path(@user), class: 'button' %></p>
     <p><%= link_to 'Delete Account', @user, method: :delete,
           data: { confirm: "Are you sure want to permanenly delete your account?" },
           class: 'button' %></p>
+  <% end %>
   </nav>
-</footer>
+  </footer>

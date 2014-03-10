@@ -7,6 +7,8 @@ describe "Viewing the list of users" do
     user2 = create(:user)
     user3 = create(:user)
 
+    sign_in(user1)
+
     visit users_url
 
     expect(page).to have_link(user1.name)
