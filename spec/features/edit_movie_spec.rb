@@ -1,6 +1,10 @@
 require 'spec_helper'
 
 describe "Editing a movie" do
+  before do
+      admin = create(:user, admin: true)
+      sign_in(admin)
+  end
 
   it "updates the movie and shows the movie's updated details" do
     movie = Movie.create(movie_attributes)

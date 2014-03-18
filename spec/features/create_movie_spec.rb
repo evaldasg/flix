@@ -1,6 +1,10 @@
 require 'spec_helper'
 
 describe "Creating a new movie" do
+  before do
+      admin = create(:user, admin: true)
+      sign_in(admin)
+  end
 
   it "saves the movie and shows the new movie's details" do
     visit movies_url
