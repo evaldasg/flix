@@ -9,7 +9,7 @@ FactoryGirl.define do
   end
 
   factory :movie do
-    title "Frozen"
+    sequence(:title) { |n| "Frozen#{n}" }
     rating "PG"
     total_gross 388736000.00
     description "Fearless optimist Anna teams up with Kristoff in an epic journey, encountering Everest-like conditions, and a hilarious snowman named Olaf in a race to find Anna's sister Elsa, whose icy powers have trapped the kingdom in eternal winter."
@@ -18,5 +18,21 @@ FactoryGirl.define do
     director "Chris Buck, Jennifer Lee"
     duration 102
     image_file_name "frozen.jpg"
+
+    factory :movie_with_review do
+      after(:create) do |movie|
+        create(:review, movie: movie)
+      end
+      after(:build) do |movie|
+        build(:review, movie: movie)
+      end
+    end
+  end
+
+  factory :review do
+    stars 5
+    sequence(:comment) { |n| "I laughed and cried, it was very great.#{n}" }
+    movie
+    user
   end
 end

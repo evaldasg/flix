@@ -107,6 +107,23 @@ describe "A user" do
     expect(user.password_digest).to be_present
   end
 
+  it "has reviews" do
+    user = create(:user)
+    movie1 = build(:movie)
+    movie2 = build(:movie)
+
+    review1 = movie1.reviews.new(stars: 4, comment: "Great movie!")
+    review1.user = user
+    review1.save!
+
+    review2 = movie2.reviews.new(stars: 5, comment: "Outstanding!!!")
+    review2.user = user
+    review2.save!
+
+    expect(user.reviews).to include(review1)
+    expect(user.reviews).to include(review2)
+  end
+
   describe "authenticate" do
     before do
       @user = create(:user)

@@ -14,7 +14,6 @@ end
 
 def review_attributes(overrides = {})
   {
-    name: "Tadas Blinda",
     stars: 5,
     comment: "I laughed and cried, it was very great."
   }.merge(overrides)

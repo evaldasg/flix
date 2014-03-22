@@ -3,7 +3,7 @@ require 'spec_helper'
 describe "A review" do
 
   it "belongs to a movie" do
-    movie = Movie.create(movie_attributes)
+    movie = create(:movie)
 
     review = movie.reviews.new(review_attributes)
 
@@ -11,20 +11,13 @@ describe "A review" do
   end
 
   it "with example attributes is valid" do
-    review = Review.new(review_attributes)
+    review = build(:review)
 
     expect(review.valid?).to be_true
   end
 
-  it "requires a name" do
-    review = Review.new(name: "")
-
-    expect(review.valid?).to be_false
-    expect(review.errors[:name].any?).to be_true
-  end
-
   it "requires a comment" do
-    review = Review.new(comment: "")
+    review = build(:review, comment: "")
 
     expect(review.valid?).to be_false
     expect(review.errors[:comment].any?).to be_true

@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe "Viewing the list of users" do
 
+
   it "shows the users" do
     user1 = create(:user)
     user2 = create(:user)

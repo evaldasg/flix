@@ -56,7 +56,10 @@ describe "Navigating movies" do
   end
 
   it "allows navigation from the detail page to 'Reviews' page for the movie" do
-    movie = Movie.create(movie_attributes)
+    user = create(:user)
+    sign_in(user)
+
+    movie = create(:movie)
 
     visit movie_url(movie)
 

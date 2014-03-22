@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe "A movie" do
   it "is a flop if the total gross is less than $50M" do
-    movie = Movie.new(total_gross: 45000000)
+    movie = build(:movie, total_gross: 45000000)
 
     expect(movie).to be_flop
   end
@@ -199,9 +199,7 @@ describe "A movie" do
   end
 
   it "deletes associated review" do
-    movie = Movie.create(movie_attributes)
-
-    movie.reviews.create(review_attributes)
+    movie = create(:movie_with_review)
 
     expect {
       movie.destroy
