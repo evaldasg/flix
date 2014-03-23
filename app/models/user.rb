@@ -11,6 +11,9 @@ class User < ActiveRecord::Base
   validates :username, presence: true, format: /\A[A-Z0-9]+\z/i,
                         uniqueness: { case_sensitive: false },
                         exclusion: { in: %w(admin superuser) }
+  scope :by_name, -> { order(:name) }
+  scope :non_admins, -> { by_name.where(admin: false) }
+
 
   def gravatar_id
     Digest::MD5::hexdigest(email.downcase)

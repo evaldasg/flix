@@ -4,7 +4,18 @@ class MoviesController < ApplicationController
 
 
   def index
-    @movies = Movie.released
+    case params[:filter]
+    when 'hits'
+      @movies = Movie.hits
+    when 'flops'
+      @movies = Movie.flops
+    when 'upcoming'
+      @movies = Movie.upcoming
+    when 'recent'
+      @movies = Movie.recent
+    else
+      @movies = Movie.released
+    end
   end
 
   def show

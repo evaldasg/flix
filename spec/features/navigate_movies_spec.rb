@@ -8,7 +8,7 @@ describe "Navigating movies" do
 
     visit movie_url(movie)
 
-    click_link "All Movies"
+    click_link "Released"
 
     expect(current_path).to eq(movies_path)
   end
@@ -25,14 +25,14 @@ describe "Navigating movies" do
 
   end
 
-  it "allows navigation to 'Upcoming Movies' listing page" do
+  it "allows navigation to 'Upcoming' listing page" do
     movie = Movie.create(movie_attributes)
 
     visit movies_url
 
-    click_link 'Upcoming Movies'
+    click_link 'Upcoming'
 
-    expect(current_path).to eq(upcoming_path)
+    expect(current_path).to eq(filtered_movies_path(:upcoming))
   end
 
   it "allows navigation to the 'Recently Added' movies listing page" do
@@ -45,14 +45,14 @@ describe "Navigating movies" do
     expect(current_path).to eq(recently_added_path)
   end
 
-  it "allows navigation to the 'Hits Movies' listing page" do
+  it "allows navigation to the 'Hits' listing page" do
     movie = Movie.create(movie_attributes)
 
     visit movies_url
 
-    click_link 'Hits Movies'
+    click_link 'Hits'
 
-    expect(current_path).to eq(hits_path)
+    expect(current_path).to eq(filtered_movies_path(:hits))
   end
 
   it "allows navigation from the detail page to 'Reviews' page for the movie" do

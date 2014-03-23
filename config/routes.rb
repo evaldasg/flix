@@ -7,13 +7,17 @@ Flix::Application.routes.draw do
 
   root "movies#index"
 
+  get "upcoming" => "movies#upcoming"
+  get "recently_added" => "movies#recently_added"
+  get "hits" => "movies#hits"
+
+  get "movies/filter/:filter" => "movies#index", as: :filtered_movies
+  # get "movies/filter/flops" => "movies#index", filter: "flops"
+
   resources :movies do
     resources :reviews
     resources :favorites
   end
-  get "upcoming" => "movies#upcoming"
-  get "recently_added" => "movies#recently_added"
-  get "hits" => "movies#hits"
 
   get "signup" => "users#new"
 

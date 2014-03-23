@@ -6,4 +6,6 @@ class Review < ActiveRecord::Base
 
   belongs_to :movie
   belongs_to :user
+
+  scope :past_n_days, ->(past) { where("created_at >= ?", past.days.ago) }
 end
