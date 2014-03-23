@@ -60,4 +60,12 @@ describe "Viewing an individual movie" do
 
     expect(page).to have_title("Top Animations - #{movie.title}")
   end
+
+  it "has an SEO-friendly URL" do
+    movie = create(:movie, title: "A bug's life")
+
+    visit movie_url(movie)
+
+    expect(current_path).to eq("/movies/#{movie.title.parameterize}")
+  end
 end
