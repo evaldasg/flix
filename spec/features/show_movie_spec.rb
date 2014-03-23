@@ -35,4 +35,29 @@ describe "Viewing an individual movie" do
 
     expect(page).to have_text("Flop!")
   end
+
+  it "shows the movie's fans and genres in the sidebar" do
+    movie = create(:movie)
+
+    user = create(:user)
+    movie.fans << user
+
+    genre = create(:genre)
+    movie.genres << genre
+
+    visit movie_url(movie)
+
+    within("aside#sidebar") do
+      expect(page).to have_text(user.name)
+      expect(page).to have_text(genre.name)
+    end
+  end
+
+  it "includes the movie's title in the page title" do
+    movie = create(:movie)
+
+    visit movie_url(movie)
+
+    expect(page).to have_title("Top Animations - #{movie.title}")
+  end
 end

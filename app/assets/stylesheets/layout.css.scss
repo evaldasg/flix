@@ -118,6 +118,17 @@ aside#sidebar {
     text-decoration: none;
   }
 
+  h3 {
+    padding-bottom: .5em;
+    margin: 1em 0;
+    font-size: 120%;
+    border-bottom: 1px solid $subdued-color;
+
+    &.no-rule {
+      border: none;
+    }
+  }
+
   nav {
     ul {
       margin: 0;
