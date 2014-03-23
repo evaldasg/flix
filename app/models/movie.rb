@@ -1,4 +1,11 @@
 class Movie < ActiveRecord::Base
+  has_many :favorites, dependent: :destroy
+  has_many :fans, through: :favorites, source: :user
+  has_many :reviews, dependent: :destroy
+  has_many :critics, through: :reviews, source: :user
+  has_many :moviegenres, dependent: :destroy
+  has_many :genres, through: :moviegenres
+
   RATINGS = %w(G PG PG-13 R NC-17)
   validates :title, :released_on, :duration, presence: true
   validates :description, length: { minimum: 25 }
@@ -10,8 +17,6 @@ class Movie < ActiveRecord::Base
     message: "must reference a GIF, JPG, or PNG image"
   }
   validates :rating, inclusion: { in: RATINGS, message: "is not selected" }
-
-  has_many :reviews, dependent: :destroy
 
   def flop?
     total_gross.blank? || total_gross < 50000000

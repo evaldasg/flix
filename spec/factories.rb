@@ -35,4 +35,8 @@ FactoryGirl.define do
     movie
     user
   end
+
+  factory :genre do
+    sequence(:name) { |n| "Name#{n}" }
+  end
 end

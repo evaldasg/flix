@@ -117,10 +117,63 @@ Movie.create!([
       image_file_name: "cars.jpg"
     }
 ])
+
+User.create!([
+  {
+    name: "Roger Ebert",
+    username: "roger",
+    email: "roger@example.com",
+    password: "secret",
+    password_confirmation: "secret"
+  },
+  {
+    name: "Gene Siskel",
+    username: "gene",
+    email: "gene@example.com",
+    password: "secret",
+    password_confirmation: "secret"
+  },
+  {
+    name: "Peter Travers",
+    username: "peter",
+    email: "peter@example.com",
+    password: "secret",
+    password_confirmation: "secret"
+  },
+  {
+    name: "Elvis Mitchell",
+    username: "elvis",
+    email: "elvis@example.com",
+    password: "secret",
+    password_confirmation: "secret"
+  }
+])
+
+roger = User.find_by(name: "Roger Ebert")
+gene = User.find_by(name: "Gene Siskel")
+peter = User.find_by(name: "Peter Travers")
+elvis = User.find_by(name: "Elvis Mitchell")
+
 movie = Movie.find_by(title: 'Frozen')
-movie.reviews.create!(name: "Roger Ebert", stars: 5, comment: "I laughed, I cried, I spilled my popcorn!")
-movie.reviews.create!(name: "Gene Siskel", stars: 5, comment: "I'm a better reviewer than he is.")
-movie.reviews.create!(name: "Peter Travers", stars: 4, comment: "It's been years since a movie superhero was this fierce and this funny.")
+movie.reviews.create!(user: roger, stars: 5, comment: "I laughed, I cried, I spilled my popcorn!")
+movie.reviews.create!(user: gene, stars: 5, comment: "I'm a better reviewer than he is.")
+movie.reviews.create!(user: peter, stars: 4, comment: "It's been years since a movie superhero was this fierce and this funny.")
 
 movie = Movie.find_by(title: 'Tangled')
-movie.reviews.create!(name: "Elvis Mitchell", stars: 5, comment: "It's a bird, it's a plane, it's a blockbuster!")
+movie.reviews.create!(user: elvis, stars: 5, comment: "It's a bird, it's a plane, it's a blockbuster!")
+
+movie = Movie.find_by(title: 'Frozen')
+movie.fans << roger
+movie.fans << gene
+movie.fans << elvis
+
+Genre.create!(name: "Action")
+Genre.create!(name: "Comedy")
+Genre.create!(name: "Drama")
+Genre.create!(name: "Romance")
+Genre.create!(name: "Thriller")
+Genre.create!(name: "Fantasy")
+Genre.create!(name: "Documentary")
+Genre.create!(name: "Adventure")
+Genre.create!(name: "Animation")
+Genre.create!(name: "Sci-Fi")

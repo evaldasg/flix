@@ -4,6 +4,7 @@ describe "Creating a new movie" do
   before do
       admin = create(:user, admin: true)
       sign_in(admin)
+      @genres = create_list(:genre, 3)
   end
 
   it "saves the movie and shows the new movie's details" do
@@ -21,6 +22,8 @@ describe "Creating a new movie" do
     fill_in 'Director', with: "123"
     fill_in 'Image file name', with: "movie.png"
     fill_in 'Duration', with: '100'
+    check(@genres[0].name)
+    check(@genres[1].name)
 
     click_button 'Create Movie'
 
@@ -28,6 +31,9 @@ describe "Creating a new movie" do
 
     expect(page).to have_text('New Title')
     expect(page).to have_text('Movie successfully created!')
+    expect(page).to have_text(@genres[0].name)
+    expect(page).to have_text(@genres[1].name)
+    expect(page).not_to have_text(@genres[2].name)
   end
 
   it "does not save the movie if it's invalid" do

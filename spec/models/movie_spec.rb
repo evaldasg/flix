@@ -216,4 +216,15 @@ describe "A movie" do
 
     expect(movie.average_stars).to eq(4)
   end
+
+  it "has fans" do
+    movie = build(:movie)
+    fan = build_pair(:user)
+
+    movie.favorites.new(user: fan[0])
+    movie.favorites.new(user: fan[1])
+
+    expect(movie.fans).to include(fan[0])
+    expect(movie.fans).to include(fan[1])
+  end
 end

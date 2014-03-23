@@ -1,6 +1,16 @@
 require 'spec_helper'
 
 describe "A user" do
+  it "has favorite movies" do
+    user = build(:user)
+    movie = build_pair(:movie)
+
+    user.favorites.new(movie: movie[0])
+    user.favorites.new(movie: movie[1])
+
+    expect(user.favorite_movies).to include(movie[0])
+    expect(user.favorite_movies).to include(movie[1])
+  end
 
   it "requires a name" do
     user = build(:user, name: "")
